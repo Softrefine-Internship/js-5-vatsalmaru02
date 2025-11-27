@@ -1,6 +1,7 @@
 // Write a JavaScript program that creates a class called Bank with properties for bank names and branches. Include methods to add a branch, remove a branch, and display all branches. Create an instance of the Bank class and perform operations to add and remove branches.
 
 class Bank {
+  
   constructor(bankName) {
     this.bankName = bankName;
     this.branches = [];
@@ -9,11 +10,13 @@ class Bank {
   addBranch(branchName) {
     this.branches.push(branchName);
     console.log(`Branch "${branchName}" added to ${this.bankName}.`);
+    return this;
   }
 
   removeBranch(branchName) {
     this.branches = this.branches.filter((branch) => branch !== branchName);
     console.log(`Branch "${branchName}" removed from ${this.bankName}.`);
+    return this;
   }
 
   displayAllBranches() {
@@ -21,17 +24,19 @@ class Bank {
     this.branches.forEach((branch, index) => {
       console.log(`${index + 1} . ${branch}`);
     });
+    return this;
   }
 
   displayDetails() {
     console.log(`Total Branches: ${this.branches.length}`);
+    return this;
   }
 }
 const myBank = new Bank("Global Bank");
-myBank.addBranch("Downtown");
-myBank.addBranch("Uptown");
-myBank.displayAllBranches();
-myBank.removeBranch("Downtown");
-myBank.displayAllBranches();
 
-myBank.displayDetails();
+myBank
+  .addBranch("Midtown")
+  .addBranch("Suburban")
+  .removeBranch("Uptown")
+  .displayAllBranches()
+  .displayDetails();

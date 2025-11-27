@@ -13,7 +13,9 @@ class BankAccount {
     } else {
       console.log("Deposit amount must be positive.");
     }
+    return this;
   }
+
   withdraw(amount) {
     if (amount > 0 && amount <= this.balance) {
       this.balance -= amount;
@@ -23,17 +25,21 @@ class BankAccount {
     } else {
       console.log("Withdrawal amount must be positive.");
     }
+    return this;
   }
 
   getAccountNumber() {
     console.log(`Account number: ${this.accountNumber}.`);
+    return this;
   }
+
   displayDetails() {
     console.log(`Account number: ${this.accountNumber}`);
     console.log(`Total balance: ${this.balance}`);
+    return this;
   }
 }
 const account1 = new BankAccount("123456", 500);
-account1.deposit(200);
-account1.withdraw(100);
-account1.displayDetails();
+
+
+account1.deposit(300).withdraw(50).displayDetails();

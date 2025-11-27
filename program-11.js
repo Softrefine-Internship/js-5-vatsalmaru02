@@ -16,6 +16,7 @@ class BankAccount {
     } else {
       console.log("Deposit amount must be positive.");
     }
+    return this;
   }
 
   withdraw(amount) {
@@ -31,6 +32,7 @@ class BankAccount {
     } else {
       console.log("Withdrawal amount must be positive.");
     }
+    return this;
   }
 
   transfer(amount, targetAccount) {
@@ -45,24 +47,19 @@ class BankAccount {
     } else {
       console.log("Transfer amount must be positive.");
     }
+    return this;
   }
 
   displayDetails() {
     console.log(`Account Number: ${this.accountNumber}`);
     console.log(`Account Holder: ${this.accountHolderName}`);
     console.log(`Balance: ${this.balance}`);
+    return this;
   }
 }
 
 const account1 = new BankAccount("123", "Vatsal", 1000);
 const account2 = new BankAccount("456", "Pratik", 5000);
 
-account1.displayDetails();
-account2.displayDetails();
-
-account1.deposit(500);
-account2.withdraw(200);
-account1.transfer(300, account2);
-
-account1.displayDetails();
-account2.displayDetails();
+account1.withdraw(500).deposit(1000).transfer(500, account2).displayDetails();
+account2.deposit(200).withdraw(100).displayDetails();

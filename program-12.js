@@ -11,6 +11,7 @@ class University {
     console.log(
       `Department "${departmentName}" added to ${this.universityName}`
     );
+    return this;
   }
 
   removeDepartment(departmentName) {
@@ -20,6 +21,7 @@ class University {
     console.log(
       `Department "${departmentName}" removed from ${this.universityName}`
     );
+    return this;
   }
 
   displayAllDepartments() {
@@ -27,21 +29,22 @@ class University {
     this.departments.forEach((department, index) => {
       console.log(`${index + 1} . ${department}`);
     });
+    return this;
   }
 
   displayDetails() {
     console.log(`Total Departments: ${this.departments.length}`);
+    return this;
   }
 }
 
 const myUniversity = new University("Dr Shubhash University");
 
-myUniversity.addDepartment("B.Tech Computer Science");
-myUniversity.addDepartment("BBA");
-myUniversity.addDepartment("MBBS");
-myUniversity.displayAllDepartments();
 
-myUniversity.removeDepartment("MBBS");
-myUniversity.displayAllDepartments();
 
-myUniversity.displayDetails();
+myUniversity
+  .addDepartment("MBA")
+  .addDepartment("BCA")
+  .removeDepartment("BBA")
+  .displayAllDepartments()
+  .displayDetails();
